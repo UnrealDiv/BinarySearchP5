@@ -7,6 +7,7 @@ function setup() {
   createCanvas(windowWidth * 0.9, windowHeight * 0.9);
   searchInput = select("#input"); 
   searchButton = select("#btn"); 
+  searchInput.changed(search);
   searchButton.mousePressed(search);
   scaleX = width / 1500; 
   scaleY = height / 700; 
@@ -45,12 +46,12 @@ async function BinarySearch(array,value,l,r){
 }
 
 function windowResized() {
-  let newWidth = windowWidth * 0.9; // Calculate new canvas width based on window width
-  let newHeight = windowHeight * 0.9; // Calculate new canvas height based on window height
-  resizeCanvas(newWidth, newHeight); // Resize canvas
-  redraw(); // Redraw canvas content
-  scaleX = width / 1500; // Update scaling factor for width
-  scaleY = height / 700; // Update scaling factor for height
+  let newWidth = windowWidth * 0.9; 
+  let newHeight = windowHeight * 0.9; 
+  resizeCanvas(newWidth, newHeight);
+  redraw();
+  scaleX = width / 1500; 
+  scaleY = height / 700; 
 }
 
 function search() {
@@ -72,9 +73,9 @@ function draw() {
     }
     rect(i * w * scaleX, height, w * scaleX, -600 * scaleY - values[i] * scaleY);
     fill(0);
-    textSize(25 * scaleX); // Scale text size based on width scaling factor
+    textSize(25 * scaleX);
     textAlign(CENTER, CENTER);
-    text(values[i], i * w * scaleX + w * scaleX / 2, height - values[i] * scaleY - 10 * scaleY); // Scale text position based on scaling factors
+    text(values[i], i * w * scaleX + w * scaleX / 2, height - values[i] * scaleY - 10 * scaleY); 
   }
   if(found==false){
     fill('#FF4949');
