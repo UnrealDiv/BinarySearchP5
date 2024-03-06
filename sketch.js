@@ -3,8 +3,9 @@ let states= [];
 let w = 50;
 function setup() {
   createCanvas(1500, 700);
-  searchInput = select("#searchInput"); 
-  searchInput.changed(search); 
+  searchInput = select("#input"); 
+  searchButton = select("#btn"); 
+  searchButton.mousePressed(search);
   for(let i=0;i<values.length;i++){
     values[i] = Math.round(Math.random()*100);
     states[i] = -1;
@@ -20,6 +21,9 @@ async function BinarySearch(array,value,l,r){
   states[mid] = 0;
   if(i>j){
     found = false;
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); 
       return false;
   }
   if(value > array[mid]){
@@ -29,6 +33,9 @@ async function BinarySearch(array,value,l,r){
   }
   if(value === array[mid]){      
       states[mid] =2;
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); 
       return 'true';
   }
 }
